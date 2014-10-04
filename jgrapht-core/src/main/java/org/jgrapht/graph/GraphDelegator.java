@@ -40,9 +40,7 @@
 package org.jgrapht.graph;
 
 import java.io.*;
-
 import java.util.*;
-
 import org.jgrapht.*;
 
 
@@ -171,6 +169,13 @@ public class GraphDelegator<V, E>
         return ((UndirectedGraph<V, E>) delegate).degreeOf(vertex);
     }
 
+    @Override public Spliterator<V> vertices() {
+        return vertexSet().spliterator();
+    }
+    @Override public Spliterator<E> edges() {
+        return edgeSet().spliterator();
+    }
+    
     /**
      * @see Graph#edgeSet()
      */

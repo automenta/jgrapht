@@ -45,9 +45,7 @@
 package org.jgrapht.graph;
 
 import java.io.*;
-
 import java.util.*;
-
 import org.jgrapht.*;
 import org.jgrapht.util.*;
 
@@ -489,6 +487,15 @@ public abstract class AbstractBaseGraph<V, E>
 
         return unmodifiableVertexSet;
     }
+
+    @Override public Spliterator<V> vertices() {
+        return vertexSet().spliterator();
+    }
+    @Override public Spliterator<E> edges() {
+        return edgeSet().spliterator();
+    }
+    
+    
 
     /**
      * @see Graph#getEdgeWeight(Object)

@@ -42,6 +42,8 @@
 package org.jgrapht;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 
 /**
@@ -249,6 +251,8 @@ public interface Graph<V, E>
      */
     public boolean containsVertex(V v);
 
+    public Spliterator<V> vertices();
+    public Spliterator<E> edges();
     /**
      * Returns a set of the edges contained in this graph. The set is backed by
      * the graph, so changes to the graph are reflected in the set. If the graph
@@ -262,7 +266,27 @@ public interface Graph<V, E>
      *
      * @return a set of the edges contained in this graph.
      */
-    public Set<E> edgeSet();
+    default public Set<E> edgeSet() {
+        return StreamSupport.stream(edges(), false).collect(Collectors.toSet());
+    }
+
+    
+    /**
+     * Returns a set of the vertices contained in this graph. The set is backed
+     * by the graph, so changes to the graph are reflected in the set. If the
+     * graph is modified while an iteration over the set is in progress, the
+     * results of the iteration are undefined.
+     *
+     * <p>The graph implementation may maintain a particular set ordering (e.g.
+     * via {@link java.util.LinkedHashSet}) for deterministic iteration, but
+     * this is not required. It is the responsibility of callers who rely on
+     * this behavior to only use graph implementations which support it.</p>
+     *
+     * @return a set view of the vertices contained in this graph.
+     */
+    default public Set<V> vertexSet() {
+        return StreamSupport.stream(vertices(), false).collect(Collectors.toSet());
+    }
 
     /**
      * Returns a set of all edges touching the specified vertex. If no edges are
@@ -378,20 +402,6 @@ public interface Graph<V, E>
      */
     public boolean removeVertex(V v);
 
-    /**
-     * Returns a set of the vertices contained in this graph. The set is backed
-     * by the graph, so changes to the graph are reflected in the set. If the
-     * graph is modified while an iteration over the set is in progress, the
-     * results of the iteration are undefined.
-     *
-     * <p>The graph implementation may maintain a particular set ordering (e.g.
-     * via {@link java.util.LinkedHashSet}) for deterministic iteration, but
-     * this is not required. It is the responsibility of callers who rely on
-     * this behavior to only use graph implementations which support it.</p>
-     *
-     * @return a set view of the vertices contained in this graph.
-     */
-    public Set<V> vertexSet();
 
     /**
      * Returns the source vertex of an edge. For an undirected graph, source and

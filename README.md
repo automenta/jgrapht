@@ -1,4 +1,10 @@
-# JGraphT
+# JGraphT: Stream Graph + Blueprints interface
+
+Experimental fork that introduces Iterator/Stream methods in the core Graph interface as an alternative
+to the default Set<V> and Set<E> methods.  Includes an oumplementation of (Tinkerpop Blueprints)[https://github.com/tinkerpop/blueprints/wiki] which wraps
+Blueprints Graph as JGraphT DirectedGraph for use in JGraphT.
+
+---
 
 Released: December, 2013</p>
 

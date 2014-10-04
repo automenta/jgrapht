@@ -42,7 +42,6 @@
 package org.jgrapht.graph;
 
 import java.util.*;
-
 import org.jgrapht.*;
 import org.jgrapht.util.*;
 
@@ -69,7 +68,12 @@ public abstract class AbstractGraph<V, E>
     {
     }
 
-    
+   @Override public Spliterator<V> vertices() {
+        return vertexSet().spliterator();
+    }
+    @Override public Spliterator<E> edges() {
+        return edgeSet().spliterator();
+    }    
 
     /**
      * @see Graph#containsEdge(Object, Object)

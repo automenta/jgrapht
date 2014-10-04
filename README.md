@@ -1,7 +1,7 @@
 # JGraphT: Stream Graph + Blueprints interface
 
 Experimental fork that introduces Iterator/Stream methods in the core Graph interface as an alternative
-to the default Set vertex and edge methods.  Includes an implementation of (Tinkerpop Blueprints)[https://github.com/tinkerpop/blueprints/wiki] which wraps
+to the default Set vertex and edge methods.  Includes an implementation of [Tinkerpop Blueprints](https://github.com/tinkerpop/blueprints/wiki) which wraps
 Blueprints WrapperGraph as JGraphT DirectedGraph for use in JGraphT.
 
 Requires Java 8
